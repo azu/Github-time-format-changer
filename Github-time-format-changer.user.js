@@ -28,7 +28,7 @@ function update(body) {
         _update(body);
     });
 }
-$(document).on('pjax:end', function pjaxEnd() {
+$(document).on('pjax:popstate pjax:end', function pjaxEnd() {
     update(document.body);
 });
 var addFilterHandler = function (evt) {
@@ -38,3 +38,7 @@ var addFilterHandler = function (evt) {
 document.body.addEventListener('AutoPagerize_DOMNodeInserted', addFilterHandler, false);
 // MAIN =
 update(document.body);
+
+window.addEventListener("load", function onLoad() {
+    update(document.body);
+});
