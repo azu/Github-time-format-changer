@@ -8,6 +8,7 @@
 // @description    Change Github time format.
 // @include        https://github.com/*
 // @run-at         document-end
+// @grant          none
 // @require        https://cdn.jsdelivr.net/momentjs/2.6.0/moment.min.js
 // ==/UserScript==
 
