@@ -1,4 +1,4 @@
-# Project Name
+# Github-time-format-changer
 
 Change Github time format.
 
