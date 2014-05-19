@@ -37,7 +37,9 @@ var addFilterHandler = function (evt) {
 };
 document.body.addEventListener('AutoPagerize_DOMNodeInserted', addFilterHandler, false);
 // MAIN =
-update(document.body);
+setTimeout(function () {
+    update(document.body);
+}, 100);
 
 window.addEventListener("load", function onLoad() {
     update(document.body);
