@@ -49,7 +49,6 @@ function update(body) {
     var observer = new MutationObserver(function (mutations, self) {
         mutations.some(function (mutation) {
             if (mutation.type === 'childList' && mutation.target.nodeName === "TIME") {
-                console.log(mutation.target);
                 update(document.body);
                 return true;
             }
