@@ -28,19 +28,35 @@ function update(body) {
         _update(body);
     });
 }
-$(document).on('pjax:popstate pjax:end', function pjaxEnd() {
-    update(document.body);
-});
-var addFilterHandler = function (evt) {
-    var node = evt.target;
-    update(node);
-};
-document.body.addEventListener('AutoPagerize_DOMNodeInserted', addFilterHandler, false);
-// MAIN =
-setTimeout(function () {
-    update(document.body);
-}, 100);
+(function () {
+    // pjax
+    $(document).on('pjax:popstate pjax:end', function pjaxEnd() {
+        update(document.body);
+    });
+    // AutoPagerize
+    var addFilterHandler = function (evt) {
+        var node = evt.target;
+        update(node);
+    };
+    document.body.addEventListener('AutoPagerize_DOMNodeInserted', addFilterHandler, false);
+    // mutation chane update
+    var target = document.querySelector('body');
+    var config = {
+        childList: true,
+        subtree: true
+    };
 
-window.addEventListener("load", function onLoad() {
-    update(document.body);
-});
+    var observer = new MutationObserver(function (mutations, self) {
+        mutations.some(function (mutation) {
+            if (mutation.type === 'childList' && mutation.target.nodeName === "TIME") {
+                console.log(mutation.target);
+                update(document.body);
+                return true;
+            }
+        });
+    });
+
+    observer.observe(target, config);
+})();
+// MAIN =
+update(document.body);
