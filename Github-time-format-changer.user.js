@@ -1,7 +1,7 @@
 // ==UserScript==
 // @id             github.com-ff599db1-47d8-b14f-83b4-3e345f6d67e3@http://efcl.info/
 // @name           Github-time-format-changer
-// @version        1.0
+// @version        1.1
 // @namespace      http://efcl.info/
 // @author         azu
 // @license        MIT
